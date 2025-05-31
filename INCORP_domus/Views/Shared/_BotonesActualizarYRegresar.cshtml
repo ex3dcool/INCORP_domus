@@ -1,0 +1,22 @@
+﻿@model int
+
+@* 
+    para tomar el parámeto del comando:
+    asp-route-id 
+    la parte -id, específicamente el id, viene del controlador
+    ejemplo: de BodegaController, en el método Upsert, se declara el parmámetro id ( Upsert(int? id) ),
+    debe ir exactamente el nombre de ese parámetro
+*@
+
+<div class="d-grid gap-2 d-md-block">
+    @* <button type="submit" class="btn btn-primary" onfocus="false" accesskey="@Model">  <i class="bi bi-pencil-square"></i> Guardar </button>
+    <a asp-action="Index" class="btn btn-success"> <i class="bi bi-arrow-return-left"></i> Regresar </a>
+ *@
+
+    <button type="submit" class="btn btn-light px-5" onfocus="false" accesskey="@Model"><i class='bx bx-save mr-1'></i> Guardar </button>
+    <a asp-action="Index" class="btn btn-light px-5"><i class='bx bx-arrow-back'></i> Regresar </a>
+
+
+</div>
+
+
