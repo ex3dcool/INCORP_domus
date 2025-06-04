@@ -12,12 +12,14 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 	.AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddRazorRuntimeCompilation(); // Para recargar vistas sin reiniciar la aplicación
 
 
 builder.Services.AddEndpointsApiExplorer(); // Habilitar exploradores de endpoint
 builder.Services.AddSwaggerGen(); // Habilitar Swagger
 
+builder.Services.AddScoped<ISeguridadService, SeguridadService>(); // Registro del servicio de seguridad
 var app = builder.Build();
 
 // Middleware de desarrollo

@@ -1,0 +1,20 @@
+@model INCORP_domus.Modelos.Modulos.Seguridad.Seguridad
+
+@{
+    ViewData["Title"] = "Eliminar Seguridad";
+}
+
+<h1>Eliminar Seguridad</h1>
+
+<div>
+    <h4>¿Está seguro de que desea eliminar este elemento?</h4>
+    <div>
+        <h5>@Model.Nombre</h5>
+        <p>@Model.Descripcion</p>
+    </div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la lista</a>
+    </form>
+</div>
