@@ -50,7 +50,8 @@ app.UseAuthorization();
 // Rutas por defecto
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
+	//pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
+	pattern: "{area=Menus}/{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
