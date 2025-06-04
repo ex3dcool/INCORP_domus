@@ -41,12 +41,6 @@ namespace INCORP_domus.Areas.Admin.Controllers
         /// </summary>
         /// <param name="seguridad">Objeto seguridad a crear.</param>
         /// <returns>Redirecciona a la vista de índice si es exitoso, de lo contrario, muestra el formulario de creación con errores.</returns>
-        /// <summary>
-        /// Actualiza una seguridad existente.
-        /// </summary>
-        /// <param name="id">ID de la seguridad a actualizar.</param>
-        /// <param name="seguridad">Objeto seguridad con los nuevos datos.</param>
-        /// <returns>Redirecciona a la vista de índice si es exitoso, de lo contrario, muestra el formulario de edición con errores.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seguridad seguridad)
