@@ -29,12 +29,14 @@ namespace INCORP_domus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seguridad seguridad)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _seguridadService.Add(seguridad);
-                return RedirectToAction(nameof(Index));
+                return View(seguridad);
             }
-            return View(seguridad);
+
+            _seguridadService.Add(seguridad);
+            TempData["SuccessMessage"] = "Seguridad creada exitosamente.";
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit(int id)
@@ -56,12 +58,14 @@ namespace INCORP_domus.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _seguridadService.Update(seguridad);
-                return RedirectToAction(nameof(Index));
+                return View(seguridad);
             }
-            return View(seguridad);
+
+            _seguridadService.Update(seguridad);
+            TempData["SuccessMessage"] = "Seguridad actualizada exitosamente.";
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Delete(int id)

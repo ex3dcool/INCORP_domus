@@ -6,7 +6,12 @@ namespace INCORP_domus.Servicios.Modulos.Seguridad
 {
     public class SeguridadService : ISeguridadService
     {
-        private readonly List<Seguridad> _seguridades = new List<Seguridad>();
+        private readonly List<Seguridad> _seguridades;
+
+        public SeguridadService()
+        {
+            _seguridades = new List<Seguridad>();
+        }
 
         public IEnumerable<Seguridad> GetAll()
         {
