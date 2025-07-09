@@ -1,0 +1,28 @@
+@* ✅ Notificación tras redirección usando TempData *@
+@if (TempData["mensaje"] != null)
+{
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                try {
+                    const wrapper = document.querySelector('.lobibox-notify-wrapper');
+                    if (typeof Lobibox !== 'undefined' && wrapper) {
+                        Lobibox.notify('@TempData["tipo"]', {
+                            pauseDelayOnHover: true,
+                            continueDelayOnInactiveTab: false,
+                            position: 'top right',
+                            icon: 'bx bx-check-circle',
+                            size: 'mini',
+                            rounded: true,
+                            delay: 7000,
+                            msg: '@TempData["mensaje"]',
+                            title: '@TempData["titulo"]'
+                        });
+                    }
+                } catch (err) {
+                    console.error("Error en Lobibox:", err);
+                }
+            }, 300);
+        });
+    </script>
+}

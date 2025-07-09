@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "INCORP_domus";
+}
+
+<div class="wrapper">
+    <!--start page wrapper -->
+    <div class="page-wrapper">
+        <div class="page-content">
+
+			<!--breadcrumb-->
+			<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+				<div class="breadcrumb-title pe-3">Menú Principal</div>
+				
+				<!--Botón ícono de home-->
+				<div class="ps-3">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb mb-0 p-0">
+							<li class="breadcrumb-item">
+								<a class="dropdown-item" asp-area="Menus" asp-controller="Home" asp-action="Index"><i class="bx bx-home-alt"></i></a>
+							</li>
+						</ol>
+					</nav>
+				</div>
+				<!--FIN Botón ícono de home-->
+
+				<div class="ms-auto">
+					<div class="btn-group">
+						<button type="button" class="btn btn-light">Settings</button>
+						<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+							<span class="visually-hidden">Toggle Dropdown</span>
+						</button>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+							<a class="dropdown-item" href="javascript:;">Action</a>
+							<a class="dropdown-item" href="javascript:;">Another action</a>
+							<a class="dropdown-item" href="javascript:;">Something else here</a>
+							<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--end breadcrumb-->
+			<h6 class="mb-0 text-uppercase">OPCIONES</h6>
+			<hr />
+
+			<!--Paneles de Opciones-->
+			<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+
+				<!--COMPRAS-->
+				<div class="col-12 col-lg-4">
+					<div class="card box-shadow radius-15">
+						<div class="card radius-15">
+							<div class="card-body text-center">
+								<div class="p-4 border radius-15">
+									<img src="~/Dashtrans/assets/images/menus/compras.png" width="110" height="110" class="rounded-circle shadow" alt="">
+									<h5 class="mb-0 mt-5">COMPRAS</h5>
+									<p class="mb-3">Bodegas, Materia Prima e Insumos</p>								
+									<div class="d-grid">
+										<a href="#" class="btn btn-light radius-15">Ir a Compras</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fin COMPRAS-->
+
+				<!--VENTAS-->
+				<div class="col-12 col-lg-4">
+					<div class="card box-shadow radius-15">
+						<div class="card radius-15">
+							<div class="card-body text-center">
+								<div class="p-4 border radius-15">
+									<img src="~/Dashtrans/assets/images/menus/ventas3.png" width="110" height="110" class="rounded-circle shadow" alt="">
+									<h5 class="mb-0 mt-5">VENTAS</h5>
+									<p class="mb-3">Ventas de Centros de Trabajo</p>
+									<div class="d-grid">
+										<a href="#" class="btn btn-light radius-15">Ir a Ventas</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fin VENTAS-->
+
+				<!--DISENO-->
+				<div class="col-12 col-lg-4">
+					<div class="card box-shadow radius-15">
+						<div class="card radius-15">
+							<div class="card-body text-center">
+								<div class="p-4 border radius-15">
+									<img src="~/Dashtrans/assets/images/menus/diseno.png" width="110" height="110" class="rounded-circle shadow" alt="">
+									<h5 class="mb-0 mt-5">DISEÑO</h5>
+									<p class="mb-3">Registros de Diseño de Modas</p>
+									<div class="d-grid">
+										<a class="btn btn-light radius-15" asp-area="Admin" asp-controller="MenuDiseno" asp-action="IndexMenuDiseno">Ir a Diseño</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fin DISENO-->
+
+				<!--PLANIFICACION-->
+				<div class="col-12 col-lg-4">
+					<div class="card box-shadow radius-15">
+						<div class="card radius-15">
+							<div class="card-body text-center">
+								<div class="p-4 border radius-15">
+									<img src="~/Dashtrans/assets/images/menus/planif2.png" width="110" height="110" class="rounded-circle shadow" alt="">
+									<h5 class="mb-0 mt-5">PLANIFICACION</h5>
+									<p class="mb-3">Gestión de la Planificación</p>
+									<div class="d-grid">
+										<a href="#" class="btn btn-light radius-15">Ir a Planificación</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fin PLANIFICACION-->
+
+				<!--PRODUCCION-->
+				<div class="col-12 col-lg-4">
+					<div class="card box-shadow radius-15">
+						<div class="card radius-15">
+							<div class="card-body text-center">
+								<div class="p-4 border radius-15">
+									<img src="~/Dashtrans/assets/images/menus/produ1.png" width="110" height="110" class="rounded-circle shadow" alt="">
+									<h5 class="mb-0 mt-5">PRODUCCION</h5>
+									<p class="mb-3">Gestión de Órdenes de Producción</p>
+									<div class="d-grid">
+										<a href="#" class="btn btn-light radius-15">Ir a Producción</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fin PRODUCCION-->
+
+				<!--CONTABILIDAD-->
+				<div class="col-12 col-lg-4">
+					<div class="card box-shadow radius-15">
+						<div class="card radius-15">
+							<div class="card-body text-center">
+								<div class="p-4 border radius-15">
+									<img src="~/Dashtrans/assets/images/menus/conta1.png" width="110" height="110" class="rounded-circle shadow" alt="">
+									<h5 class="mb-0 mt-5">CONTABILIDAD</h5>
+									<p class="mb-3">Registros de Gestión Contable</p>
+									<div class="d-grid">
+										<a href="#" class="btn btn-light radius-15">Ir a Contabilidad</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fin CONTABILIDAD-->
+
+				<!--NOMINA-->
+				<div class="col-12 col-lg-4">
+					<div class="card box-shadow radius-15">
+						<div class="card radius-15">
+							<div class="card-body text-center">
+								<div class="p-4 border radius-15">
+									<img src="~/Dashtrans/assets/images/menus/nomina.png" width="110" height="110" class="rounded-circle shadow" alt="">
+									<h5 class="mb-0 mt-5">NOMINA</h5>
+									<p class="mb-3">Gestión y Control de Mano de Obra</p>
+									<div class="d-grid">
+										<a href="#" class="btn btn-light radius-15">Ir a Nómina</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fin NOMINA-->
+
+			</div>
+			<!--Fin Paneles de Opciones-->
+
+        </div>
+    </div>
+    <!--end page wrapper -->
+</div>
+<!--end wrapper-->

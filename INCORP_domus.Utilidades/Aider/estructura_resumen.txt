@@ -1,0 +1,14 @@
+INCORP_domus/
+├── INCORP_domus/
+│   ├── Areas/
+│   ├── wwwroot/
+│   ├── Views/
+│   └── Program.cs
+├── INCORP_domus.Modelos/
+├── INCORP_domus.AccesoDatos/
+├── INCORP_domus.Servicios/
+├── INCORP_domus.Utilidades/
+│   ├── Scripts/
+│   │   └── Aider/
+│   └── Aider/
+└── README.md

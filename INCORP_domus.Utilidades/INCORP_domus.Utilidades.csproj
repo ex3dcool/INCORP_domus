@@ -7,12 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Aider\estructura_bd%2816%29.sql" />
+    <None Remove="Scripts\Estructura\actualizar_namespaces_IMOC_CORREGIDO.ps1.bak" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Humanizer" Version="2.14.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.6" />
     <PackageReference Include="System.Reactive" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Aider\" />
+    <Folder Include="Alertas\" />
+    <Folder Include="ViewEngines\" />
     <Folder Include="Scripts\Documentacion\" />
+    <Folder Include="Scripts\Estructura\" />
+    <Folder Include="Scripts\Scaffolding\Configuracion\" />
   </ItemGroup>
 
 </Project>

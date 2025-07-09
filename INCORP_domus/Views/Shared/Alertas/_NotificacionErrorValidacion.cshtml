@@ -1,0 +1,17 @@
+@* ❌ Opcional: notificación visual de errores de validación de modelo *@
+@if (!ViewData.ModelState.IsValid)
+{
+    <script>
+        window.addEventListener('load', function () {
+            Lobibox.notify('warning', {
+                position: 'top right',
+                icon: 'bx bx-x-circle',
+                msg: 'Hay datos faltantes. Por favor, revisá los campos obligatorios.',
+                title: 'Errores de validación',
+                delay: 8000,
+                size: 'mini',
+                rounded: true
+            });
+        });
+    </script>
+}

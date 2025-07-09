@@ -1,0 +1,385 @@
+/*.container { <!--
+    from w ww .j a va2 s . c o m--> position:relative;
+    width: 16%;
+}*/
+
+:root {
+    --primary: #18db86;
+    --secondary: #ffffff;
+    --secondary-light: rgb(173, 173, 173);
+    --dark1: #222222;
+    --dark2: #050505;
+}
+
+.image {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+    .image + .tooltiptext2 {
+        visibility: hidden;
+        width: 100px;
+        background-color: var(--dark2);
+        color: var(--primary);
+        text-align: center;
+        border-radius: 7px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 2;
+        top: -9px;
+        left: 111%;
+        font-size: 80%;
+        font-family: Arial;
+        opacity: 0;
+        transition: opacity 0.4s ease,transform 0.4s ease;
+    }
+
+        .image + .tooltiptext2::after {
+            content: "";
+            position: absolute;
+            top: 51%;
+            right: 100%;
+            margin-top: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: blue;
+        }
+
+    .image:hover + .tooltiptext2 {
+        visibility: visible;
+        opacity: 2;
+    }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px dotted pink;
+    font-weight: bold;
+    font-size: 80%;
+}
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 151%;
+        background-color: gray aliceblue;
+        color: white;
+        text-align: center;
+        border-radius: 7px;
+        padding: 6px 0;
+        position: absolute;
+        z-index: 2;
+        top: -9px;
+        left: 111%;
+        font-size: 80%;
+        font-family: Arial;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 51%;
+            right: 100%;
+            margin-top: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: grey;
+        }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 2;
+    }
+
+
+/*ESTILO DE AUMENTAR Y SOMBRA EN CAJAS*/    
+.box-shadow {
+    -webkit-box-shadow: 0 1px 1px rgba(72,78,85,.6);
+    box-shadow: 0 1px 1px rgba(72,78,85,.6);
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+
+    .box-shadow:hover {
+        -webkit-box-shadow: 0 20px 40px rgba(72,78,85,.6);
+        box-shadow: 0 20px 40px rgba(72,78,85,.6);
+        -webkit-transform: translateY(-15px);
+        -moz-transform: translateY(-15px);
+        -ms-transform: translateY(-15px);
+        -o-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+/*FIN ESTILO DE AUMENTAR Y SOMBRA EN CAJAS*/    
+
+
+/*ESTILO DE EFECTO BRILLO y TRANSFORMAR a azul*/
+.section_our_solution .row {
+    align-items: center;
+}
+
+.our_solution_category {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+    .our_solution_category .solution_cards_box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+/* FONDO DEL CUADRO ORIGINAL*/
+.solution_cards_box .solution_card {
+    flex: 0 50%;
+    /* FONDO DEL CUADRO ORIGINAL*/
+    background: rgba(72,78,85,.6);
+    /*opacity: 8;*/
+    /*sombra exterior del cuadro*/
+    box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2), 0 5px 15px 0 aliceblue;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 10px 15px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    min-height: 80px;
+    transition: 0.7s;
+}
+
+/* FONDO DEL CUADRO Y TRIANGULO TOCADO*/
+    .solution_cards_box .solution_card:hover {
+        /* FONDO DEL CUADRO TOCADO*/
+/*        background: #7c8a90;*/
+        background: #1e3036;
+        color: #fff;
+        transform: scale(1.1);
+        z-index: 9;
+    }
+
+        .solution_cards_box .solution_card:hover::before {
+            /* FONDO TRIANGULO TOCADO*/
+            background: #122226;
+        }
+
+        .solution_cards_box .solution_card:hover .solu_title h3,
+        .solution_cards_box .solution_card:hover .solu_description p {
+            color: #fff;
+        }
+
+    .solution_cards_box .solution_card:before {
+        content: "";
+        position: absolute;
+        /* FONDO TRIANGULO ORIGINAL*/
+        background: rgb(35 108 214 / 5%);
+        width: 170px;
+        height: 400px;
+        z-index: -1;
+        transform: rotate(42deg);
+        right: -56px;
+        top: -23px;
+        border-radius: 35px;
+    }
+
+.solution_card .so_top_icon {
+}
+
+.solution_card .solu_title h3 {
+    color: #212121;
+    font-size: 1.3rem;
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+.solution_card .solu_description p {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.our_solution_content h1 {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.our_solution_content p {
+}
+
+/* FONDO DEL CIRCULO TOCADO*/
+.hover_color_bubble {
+    position: absolute;
+    /* FONDO DEL CIRCULO TOCADO*/
+    background: #26393e;
+    width: 100rem;
+    height: 100rem;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    top: 16rem;
+    border-radius: 50%;
+    transform: rotate(-36deg);
+    left: -18rem;
+    transition: 0.7s;
+}
+
+.solution_cards_box .solution_card:hover .hover_color_bubble {
+    top: 0rem;
+}
+
+.solution_cards_box .solution_card .so_top_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .solution_cards_box .solution_card .so_top_icon img {
+        width: 40px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+/*start media query*/
+@media screen and (min-width: 320px) {
+    .sol_card_top_3 {
+        position: relative;
+        top: 0;
+    }
+
+    .our_solution_category {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+        .our_solution_category .solution_cards_box {
+            flex: auto;
+        }
+}
+
+@media only screen and (min-width: 768px) {
+    .our_solution_category .solution_cards_box {
+        flex: 1;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .sol_card_top_3 {
+        position: relative;
+        top: -3rem;
+    }
+
+    .our_solution_category {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+/*FIN ESTILO DE EFECTO BRILLO y TRANSFORMAR a azul*/
+
+
+/*ESTILO DE GIRAR IMAGEN*/
+
+.card2 {
+    max-width: 370px;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+}
+
+.box2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: 2s ease;
+}
+
+.card2-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    border-radius: 0px;
+}
+
+.card2-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #1f1f1f;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+    .card2-body .description2 {
+        transform-style: preserve-3d;
+        padding: 50px 50px;
+        color: #f1f1f1;
+        transform: translateZ(100px) !important;
+        height: 80%;
+        background: #642B73; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #576162, #132329); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #576162, #132329); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+.description2 span {
+    color: #f0f0f0;
+}
+
+.card2:hover .box2 {
+    transform: rotateY(180deg);
+    font-size: .9rem;
+}
+
+/*FIN ESTILO DE GIRAR IMAGEN*/
+
+
+/* Estilo IMOC 3.2 - Tooltips sutiles */
+
+[data-bs-toggle="tooltip"] {
+    text-decoration: none !important;
+    outline: none;
+    border-bottom: none;
+}
+
+.tooltip-inner {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+.tooltip.bs-tooltip-bottom .arrow::before {
+    border-bottom-color: rgba(0, 0, 0, 0.85);
+}
+
+.order-actions i {
+    text-decoration: none !important;
+    cursor: pointer;
+}

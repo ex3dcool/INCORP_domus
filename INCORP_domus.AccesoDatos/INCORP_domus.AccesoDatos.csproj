@@ -7,11 +7,12 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,6 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Modulos\Configuracion\DbContext\" />
+    <Folder Include="Modulos\Configuracion\Configuracion\" />
+    <Folder Include="Modulos\Configuracion\Repositorio\Implementaciones\" />
+    <Folder Include="Modulos\Configuracion\Repositorio\Interfaces\" />
     <Folder Include="Modulos\General\DbContext\" />
     <Folder Include="Modulos\General\Repositorio\Implementaciones\" />
     <Folder Include="Modulos\General\Repositorio\Interfaces\" />

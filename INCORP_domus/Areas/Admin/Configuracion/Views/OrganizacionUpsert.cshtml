@@ -1,0 +1,188 @@
+﻿@model INCORP_domus.Modelos.Modulos.Configuracion.Modelos.Organizacion
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var titulo = "Crear Organización";
+
+    if (!string.IsNullOrEmpty(Model.codigo))
+    {
+        titulo = "Actualizar Organización";
+    }
+}
+
+
+<form id="form-upsert" asp-action="OrganizacionUpsert" method="post">
+    @Html.AntiForgeryToken()
+    @* campo oculto ID *@
+    <input type="hidden" asp-for="id_organizacion" class="form-control" id="id_organizacion" name="id_organizacion" value="@Model.id_organizacion" />
+
+    <!--start page wrapper -->
+    <div class="page-wrapper">
+        <div class="page-content">
+
+            <!-- franja superior de Tema y botones de Formulario-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">Configuración</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Organización</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- FIN franja superior de Tema y botones de Formulario-->            
+
+            <!-- FORMULARIO GENERAL -->
+            <div class="container" style="padding-bottom: 4rem;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-xl-9">
+
+                        <h4 class="mb-0 text-uppercase">@titulo</h4>
+                        <hr />
+
+                        <!-- Panel Formulario -->
+                        <div class="card">
+                            <!-- CAMPOS de Texto -->
+                            <div class="card-body">
+                                
+                                <!-- Label de Información obligatoria y Línea separadora -->
+                                <div class="d-flex justify-content-end mb-2">
+                                    <span style="font-size: 0.85rem; color: darkgray;">(* Información Obligatoria)</span>
+                                </div>
+                                <hr />
+                                <!-- FIN Label de Información -->
+
+                                <!-- Campo Código -->
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label asp-for="codigo" class="form-label">* Código:</label>
+                                    <input type="text" asp-for="codigo" class="form-control" id="codigo" name="codigo" value="@Model.codigo" readonly />
+                                    <span asp-validation-for="codigo" class="text-danger"></span>
+                                </div>
+                                <!-- FIN Campo Código -->
+
+                                <!-- Campo Nombre -->
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label asp-for="nombre" class="form-label">* Nombre:</label>
+                                    <input type="text" asp-for="nombre" class="form-control" id="nombre" name="nombre" value="@Model.nombre" placeholder="Nombre de la Organización" />
+                                    <span asp-validation-for="nombre" class="text-danger"></span>
+                                </div>
+                                <!-- FIN Campo Nombre -->
+
+                                <!-- Campo Descripción -->
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label asp-for="descripcion" class="form-label">Descripción:</label>
+                                    <input type="text" asp-for="descripcion" class="form-control" id="descripcion" name="descripcion" value="@Model.descripcion" placeholder="Descripción de la Organización" />
+                                    <span asp-validation-for="descripcion" class="text-danger"></span>
+                                </div>
+                                <!-- FIN Campo Descripción -->
+
+                                <!-- Campo Dirección -->
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label asp-for="direccion" class="form-label">Dirección:</label>
+                                    <input type="text" asp-for="direccion" class="form-control" id="direccion" name="direccion" value="@Model.direccion" placeholder="Dirección de la Organización" />
+                                    <span asp-validation-for="direccion" class="text-danger"></span>
+                                </div>
+                                <!-- FIN Campo Dirección -->
+
+                                <!-- Campo Estado -->
+                                <div class="mb-3 w-50 mx-auto">
+                                    <label asp-for="estado" class="form-label">Estado:</label>
+                                    <select id="estado" name="estado" class="form-select">
+                                        <option value="1" @(Model.estado == 1 || Model.id_organizacion == 0 ? "selected" : "")>Activo</option>
+                                        <option value="0" @(Model.estado == 0 && Model.id_organizacion != 0 ? "selected" : "")>Inactivo</option>
+                                    </select>
+                                    <span asp-validation-for="estado" class="text-danger"></span>
+                                </div>
+                                <!-- FIN Campo Estado -->
+
+                                <!-- Botonera -->
+                                <div class="mt-4 text-center">
+                                    @if (Model.id_organizacion > 0)
+                                    {
+                                        @Html.Partial("_BotonesActualizarYRegresar", Model.codigo)
+                                    }
+                                    else
+                                    {
+                                        @Html.Partial("_BotonesCrearYRegresar", Model.codigo)
+                                    }
+                                </div>
+                                <!-- FIN Botonera -->
+                            </div>
+                            <!-- FIN CAMPOS de Texto -->
+                        </div>
+                        <!-- FIN Panel Formulario -->
+                    </div>
+                </div>
+            </div>
+            <!-- FIN FORMULARIO GENERAL -->
+        </div>
+    </div>
+    <!--end page wrapper -->
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        document.getElementById("codigo").addEventListener('change', function () {
+            validarCodigo();
+        })
+
+        function validarCodigo() {
+            var url = '@Url.Content("~/")' + "Admin/Organizacion/validarCodigo";
+            var id = '#id_organizacion';
+            var codigo = '#codigo';
+
+            $.getJSON(url, { id: $(id).val(), codigo: $(codigo).val() }, function (data) {
+                $.each(data, function (key, value) {
+                    if (value) {
+                        var codigo = document.getElementById("codigo");
+                        swal("Error", "Código Repetido", "error")
+                            .then(() => {
+                                codigo.value = "";
+                                codigo.focus();
+                            });
+                    }
+                })
+            })
+        }
+
+        document.getElementById("nombre").addEventListener('change', function () {
+            validarNombre();
+        })
+
+        function validarNombre() {
+            var url = '@Url.Content("~/")' + "Admin/Organizacion/ValidarNombre";
+            var id = '#id_organizacion';
+            var nombre = '#nombre';
+
+            $.getJSON(url, { id: $(id).val(), nombre: $(nombre).val() }, function (data) {
+                $.each(data, function (key, value) {
+                    if (value){
+                        var nombre = document.getElementById("nombre");
+                        swal("Error", "Nombre Repetido", "error")
+                            .then(() => {
+                                nombre.value = "";
+                                nombre.focus(); // Esto ocurre después del OK
+                            });
+                    }
+                })
+            })
+        }
+
+    </script>
+
+    <!-- Script específico del módulo organización -->
+    <script src="~/js/Configuracion/OrganizacionUpsert.js"></script>
+
+    @Html.Partial("~/Views/Shared/Alertas/_NotificacionErrorValidacion.cshtml")
+
+
+}
+

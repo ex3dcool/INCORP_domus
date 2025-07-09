@@ -1,0 +1,18 @@
+﻿@model Tuple<string, string, string, string>
+
+@{
+    var tipo = Model.Item1 ?? "info";
+    var icono = Model.Item2 ?? "bi bi-info-circle-fill";
+    var titulo = Model.Item3 ?? "Aviso";
+    var mensaje = Model.Item4 ?? "Mensaje no definido.";
+}
+
+<script>
+    console.log("✅ Alerta cargada correctamente");
+
+    Lobibox.notify("@tipo", {
+        icon: "@icono",
+        title: "@titulo",
+        msg: "@mensaje"
+    });
+</script>

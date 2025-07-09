@@ -1,4 +1,4 @@
-﻿@* @using INCORP_domus.Areas.Organizacion.Controllers.OrganizacionController *@
+﻿@using INCORP_domus.Areas.Admin.Configuracion.Controllers
 
     <!--navigation-->
     <div class="primary-menu">
@@ -7,7 +7,7 @@
                 <div class="offcanvas-header border-bottom">
                     <div class="d-flex align-items-center">
                         <div class="">
-                            <img src="~/dashtrans/images/logo-icon3.png" class="logo-icon" alt="logo icon">
+                            <img src="~/Dashtrans/assets/images/logo-icon3.png" class="logo-icon" alt="logo icon">
                         </div>
                         <div class="">
                             <h4 class="logo-text">INCORP_domus</h4>
@@ -24,14 +24,14 @@
                             <div class="parent-icon">
                                 <i class='bx bx-building'></i>
                             </div>
-                            <div class="menu-title d-flex align-items-center">Organización</div>
+                            <div class="menu-title d-flex align-items-center">Configuración</div>
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
 
                             <li>
-                                <a class="dropdown-item" asp-area="Organizacion" asp-controller="Organizaciones" asp-action="IndexOrganizaciones">
-                                    <i class='bx bx-radio-circle-marked'></i>Gestión de Organizaciones
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Organizaciones" asp-action="IndexOrganizaciones">
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Organizacion" asp-action="OrganizacionIndex"><i class='bx bx-radio-circle-marked'></i>Organizaciones</a></li>
                                 </a>
                             </li>
 
@@ -125,7 +125,7 @@
                         </li>
                         <!-- FIN MENU VENTAS -->
 
-                        <!-- MENU Diseno -->
+                        <!-- MENU DISENO -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                                 <div class="parent-icon">
@@ -159,7 +159,7 @@
                                 <li><a class="dropdown-item" href="index2.html"><i class='bx bxs-layer'></i>Datos y Reportes</a></li>
                             </ul>
                         </li>
-                        <!-- FIN MENU Diseno -->
+                        <!-- FIN MENU DISENO -->
 
                         <!-- MENU PLANIFICACION -->
                         <li class="nav-item dropdown">

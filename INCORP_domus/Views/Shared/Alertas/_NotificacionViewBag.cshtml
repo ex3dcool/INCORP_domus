@@ -1,0 +1,28 @@
+@* ⚠️ Notificación directa en la misma vista usando ViewBag *@
+@if (ViewBag.MostrarNotificacion == true)
+{
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                try {
+                    const wrapper = document.querySelector('.lobibox-notify-wrapper');
+                    if (typeof Lobibox !== 'undefined' && wrapper) {
+                        Lobibox.notify('@ViewBag.TipoNotificacion', {
+                            pauseDelayOnHover: true,
+                            continueDelayOnInactiveTab: false,
+                            position: 'top right',
+                            icon: '@ViewBag.IconoNotificacion',
+                            size: 'mini',
+                            rounded: true,
+                            delay: 7000,
+                            msg: '@ViewBag.MensajeNotificacion',
+                            title: '@ViewBag.TituloNotificacion'
+                        });
+                    }
+                } catch (err) {
+                    console.error("Error en notificación ViewBag:", err);
+                }
+            }, 300);
+        });
+    </script>
+}

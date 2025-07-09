@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    <Content Remove="Views\Shared\Alertas\_AlertaNotificacion.cshtml" />
+    <Content Remove="wwwroot\js\Configuracion\OrganizacionUpsert %28ori%29.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,8 +19,6 @@
     <PackageReference Include="MailKit" Version="4.12.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.4" />
@@ -35,9 +34,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Configuracion\Controllers\" />
+    <Folder Include="Areas\Admin\Configuracion\Views\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\DbContext\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\Configuracion\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\Repositorio\Implementaciones\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\Repositorio\Interfaces\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\UnidadTrabajo\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.Modelos\Modulos\General\Modelos\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.Modelos\Modulos\General\Validaciones\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.Modelos\Modulos\General\ViewModels\" />
+    <Folder Include="tmp.varios\estructuras\INCORP_erp.Servicios\Modulos\General\Servicios\" />
     <Folder Include="wwwroot\Dashtrans\" />
     <Folder Include="wwwroot\Imagenes\" />
-    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\Alertas\_AlertaNotificacion.cshtml" />
   </ItemGroup>
 
 </Project>
