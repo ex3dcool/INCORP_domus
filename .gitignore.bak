@@ -482,3 +482,17 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+
+# Configuraciones locales
+*.db
+*.log
+.env
+*.ps1 (si contienen claves reales)
+*.bat (si son sensibles)
+
+# Aider/OpenAI
+configurar_openai_aider.ps1
+.env_openai
+*.key
+.aider*

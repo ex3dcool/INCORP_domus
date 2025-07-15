@@ -44,6 +44,15 @@
                         <h4 class="mb-0 text-uppercase">@titulo</h4>
                         <hr />
 
+                        <!-- Selector de micrófono -->
+                        <div class="mb-3 w-50 mx-auto">
+                            <label for="selectorMicrofono" class="form-label">🎙️ Selecciona micrófono:</label>
+                            <select id="selectorMicrofono" class="form-select">
+                                <option value="">Cargando dispositivos...</option>
+                            </select>
+                        </div>
+
+
                         <!-- Panel Formulario -->
                         <div class="card">
                             <!-- CAMPOS de Texto -->
@@ -63,27 +72,45 @@
                                     <span asp-validation-for="codigo" class="text-danger"></span>
                                 </div>
                                 <!-- FIN Campo Código -->
-
+                                
                                 <!-- Campo Nombre -->
                                 <div class="mb-3 w-50 mx-auto">
                                     <label asp-for="nombre" class="form-label">* Nombre:</label>
-                                    <input type="text" asp-for="nombre" class="form-control" id="nombre" name="nombre" value="@Model.nombre" placeholder="Nombre de la Organización" />
+                                    <div class="input-group">
+                                        <input type="text" asp-for="nombre" class="form-control" id="nombre" name="nombre"
+                                               value="@Model.nombre" placeholder="Nombre de la Organización" />
+                                        <button type="button" class="btn btn-outline-secondary" data-voz="nombre" title="Hablar Nombre">
+                                            <i class="bx bx-microphone"></i>
+                                        </button>
+                                    </div>
                                     <span asp-validation-for="nombre" class="text-danger"></span>
                                 </div>
                                 <!-- FIN Campo Nombre -->
-
+                                
                                 <!-- Campo Descripción -->
                                 <div class="mb-3 w-50 mx-auto">
                                     <label asp-for="descripcion" class="form-label">Descripción:</label>
-                                    <input type="text" asp-for="descripcion" class="form-control" id="descripcion" name="descripcion" value="@Model.descripcion" placeholder="Descripción de la Organización" />
+                                    <div class="input-group">
+                                        <input type="text" asp-for="descripcion" class="form-control" id="descripcion" name="descripcion"
+                                               value="@Model.descripcion" placeholder="Descripción de la Organización" />
+                                        <button type="button" class="btn btn-outline-secondary" data-voz="descripcion" title="Hablar Descripción">
+                                            <i class="bx bx-microphone"></i>
+                                        </button>
+                                    </div>
                                     <span asp-validation-for="descripcion" class="text-danger"></span>
                                 </div>
                                 <!-- FIN Campo Descripción -->
-
+                                
                                 <!-- Campo Dirección -->
                                 <div class="mb-3 w-50 mx-auto">
                                     <label asp-for="direccion" class="form-label">Dirección:</label>
-                                    <input type="text" asp-for="direccion" class="form-control" id="direccion" name="direccion" value="@Model.direccion" placeholder="Dirección de la Organización" />
+                                    <div class="input-group">
+                                        <input type="text" asp-for="direccion" class="form-control" id="direccion" name="direccion"
+                                               value="@Model.direccion" placeholder="Dirección de la Organización" />
+                                        <button type="button" class="btn btn-outline-secondary" data-voz="direccion" title="Hablar Dirección">
+                                            <i class="bx bx-microphone"></i>
+                                        </button>
+                                    </div>
                                     <span asp-validation-for="direccion" class="text-danger"></span>
                                 </div>
                                 <!-- FIN Campo Dirección -->
@@ -98,7 +125,7 @@
                                     <span asp-validation-for="estado" class="text-danger"></span>
                                 </div>
                                 <!-- FIN Campo Estado -->
-
+                                
                                 <!-- Botonera -->
                                 <div class="mt-4 text-center">
                                     @if (Model.id_organizacion > 0)
@@ -125,64 +152,107 @@
 
 </form>
 
+
 @section Scripts {
+
     <partial name="_ValidationScriptsPartial" />
+
+    <!-- ✅ Script de reconocimiento de voz optimizado (VOSK) -->
+    <script src="~/js/IA/voz_domotica_vosk.js"></script>
 
     <script>
 
+        // 🔁 Animación de íconos de micrófono
+        function cambiarIconoEscucha(idCampo, escuchando) {
+            const boton = document.querySelector(`button[data-voz='${idCampo}']`);
+            if (!boton) return;
+
+            const icono = boton.querySelector("i");
+            if (escuchando) {
+                icono.classList.remove("bx-microphone");
+                icono.classList.add("bx-microphone-off", "bx-spin", "text-danger");
+            } else {
+                icono.classList.remove("bx-microphone-off", "bx-spin", "text-danger");
+                icono.classList.add("bx-microphone");
+            }
+        }
+
+        // ✅ Inicialización de motor y eventos de voz
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                await inicializarMotorVoz();
+
+                const campos = ["nombre", "descripcion", "direccion"];
+                campos.forEach(id => {
+                    const boton = document.querySelector(`button[data-voz='${id}']`);
+                    if (boton) {
+                        boton.addEventListener("click", function (e) {
+                            e.preventDefault();
+                            console.log("🎙️ Escuchando campo:", id);
+
+                            cambiarIconoEscucha(id, true);
+
+                            escucharCampo(id).then(() => {
+                                cambiarIconoEscucha(id, false);
+                            }).catch(error => {
+                                console.error("❌ Error en escucharCampo:", error);
+                                cambiarIconoEscucha(id, false);
+                            });
+                        });
+                    } else {
+                        console.warn(`⚠️ Botón no encontrado para: ${id}`);
+                    }
+                });
+
+            } catch (e) {
+                console.error("❌ Error al inicializar motor de voz:", e);
+            }
+        });
+
+        // 🔒 Validaciones personalizadas
         document.getElementById("codigo").addEventListener('change', function () {
             validarCodigo();
-        })
+        });
 
         function validarCodigo() {
             var url = '@Url.Content("~/")' + "Admin/Organizacion/validarCodigo";
-            var id = '#id_organizacion';
-            var codigo = '#codigo';
-
-            $.getJSON(url, { id: $(id).val(), codigo: $(codigo).val() }, function (data) {
-                $.each(data, function (key, value) {
-                    if (value) {
-                        var codigo = document.getElementById("codigo");
-                        swal("Error", "Código Repetido", "error")
-                            .then(() => {
-                                codigo.value = "";
-                                codigo.focus();
-                            });
-                    }
-                })
-            })
+            $.getJSON(url, {
+                id: $('#id_organizacion').val(),
+                codigo: $('#codigo').val()
+            }, function (data) {
+                if (data.includes(true)) {
+                    swal("Error", "Código Repetido", "error").then(() => {
+                        const c = document.getElementById("codigo");
+                        c.value = ""; c.focus();
+                    });
+                }
+            });
         }
 
         document.getElementById("nombre").addEventListener('change', function () {
             validarNombre();
-        })
+        });
 
         function validarNombre() {
             var url = '@Url.Content("~/")' + "Admin/Organizacion/ValidarNombre";
-            var id = '#id_organizacion';
-            var nombre = '#nombre';
-
-            $.getJSON(url, { id: $(id).val(), nombre: $(nombre).val() }, function (data) {
-                $.each(data, function (key, value) {
-                    if (value){
-                        var nombre = document.getElementById("nombre");
-                        swal("Error", "Nombre Repetido", "error")
-                            .then(() => {
-                                nombre.value = "";
-                                nombre.focus(); // Esto ocurre después del OK
-                            });
-                    }
-                })
-            })
+            $.getJSON(url, {
+                id: $('#id_organizacion').val(),
+                nombre: $('#nombre').val()
+            }, function (data) {
+                if (data.includes(true)) {
+                    swal("Error", "Nombre Repetido", "error").then(() => {
+                        const n = document.getElementById("nombre");
+                        n.value = ""; n.focus();
+                    });
+                }
+            });
         }
 
     </script>
 
-    <!-- Script específico del módulo organización -->
-    <script src="~/js/Configuracion/OrganizacionUpsert.js"></script>
+    <!-- Script del módulo organización -->
+    <script src="~/js/Modulos/Configuracion/OrganizacionUpsert.js"></script>
 
+    <!-- Notificación visual -->
     @Html.Partial("~/Views/Shared/Alertas/_NotificacionErrorValidacion.cshtml")
-
-
 }
-

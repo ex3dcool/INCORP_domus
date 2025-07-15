@@ -496,3 +496,6 @@ configurar_openai_aider.ps1
 .env_openai
 *.key
 .aider*
+
+# VOSK - Ignorar modelos de reconocimiento de voz
+INCORP_domus.Utilidades/IA/Voz/modelo/

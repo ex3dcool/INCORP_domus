@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Shared\Alertas\_AlertaNotificacion.cshtml" />
-    <Content Remove="wwwroot\js\Configuracion\OrganizacionUpsert %28ori%29.js" />
+    <Content Remove="wwwroot\js\Modulos\Configuracion\OrganizacionUpsert %28ori%29.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +36,8 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Configuracion\Controllers\" />
     <Folder Include="Areas\Admin\Configuracion\Views\" />
+    <Folder Include="DatosPrueba\Imagenes\" />
+    <Folder Include="DatosPrueba\Recursos\" />
     <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\DbContext\" />
     <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\Configuracion\" />
     <Folder Include="tmp.varios\estructuras\INCORP_erp.AccesoDatos\Modulos\General\Repositorio\Implementaciones\" />
@@ -47,10 +49,17 @@
     <Folder Include="tmp.varios\estructuras\INCORP_erp.Servicios\Modulos\General\Servicios\" />
     <Folder Include="wwwroot\Dashtrans\" />
     <Folder Include="wwwroot\Imagenes\" />
+    <Folder Include="wwwroot\js\IA\worklets\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Views\Shared\Alertas\_AlertaNotificacion.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\js\IA\worklets\pcm-processor.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

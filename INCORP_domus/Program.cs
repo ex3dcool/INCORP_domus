@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using INCORP_domus.AccesoDatos.Modulos.Configuracion;
 using INCORP_domus.AccesoDatos.UnidadTrabajo;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,24 +62,40 @@ else
 	app.UseHsts();
 }
 
-// Middleware base
+// 🔐 Middleware base
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(); // Habilita archivos estáticos desde wwwroot
+
+// 🎙️ Habilita acceso directo a worklets de voz (como pcm-processor.js)
+app.UseStaticFiles(new StaticFileOptions
+{
+	FileProvider = new PhysicalFileProvider(
+		Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "js", "IA", "worklets")),
+	RequestPath = "/js/IA/worklets"
+});
+
+// 📦 Continuación del pipeline: enrutamiento hacia controladores y acciones
 app.UseRouting();
+
 
 // ✅ Activar autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ✅ Rutas para áreas (como Admin/Organizacion)
-app.MapControllerRoute(
-	name: "areas",
-	pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+//// ✅ Rutas para áreas (como Admin/Organizacion)
+//app.MapControllerRoute(
+//	name: "areas",
+//	pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-// Ruta por defecto
+//// Ruta por defecto
+//app.MapControllerRoute(
+//	name: "default",
+//	pattern: "{area=Menus}/{controller=Home}/{action=Index}/{id?}");
+
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{area=Menus}/{controller=Home}/{action=Index}/{id?}");
+	pattern: "{area=Admin}/{controller=Organizacion}/{action=OrganizacionUpsert}/{id?}");
+
 
 
 app.Run();
